@@ -33,13 +33,13 @@
 BOOST_AUTO_TEST_CASE(initialize_uniform_test){
     namespace tt = boost::test_tools;
     // create two 2x2 rarrays, one to put in the function and another to compare with it
-    length = 2;
+    int length = 2;
     rarray<int,2> function_test(length,length);
     rarray<int,2> compare(length,length); 
     // fill compare array with 4's
     compare.fill(4);
     // number we want to distribute is 4x4 = 16
-    n = 16;
+    int n = 16;
     // run function with test array and n
     initialize_uniform(function_test, n);
     // check if the arrays are the same
