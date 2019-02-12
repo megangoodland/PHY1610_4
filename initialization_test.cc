@@ -117,7 +117,8 @@ BOOST_AUTO_TEST_CASE(uneven_division_R3){
                 test_result = 1;}
             else {
                 test_result = 0;
-                //goto end_of_test;}
+                //goto end_of_test;
+            }
         }
     }
     goto end_of_test;
