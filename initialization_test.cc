@@ -33,20 +33,16 @@ BOOST_AUTO_TEST_CASE(basic_test){
     // create two 2x2 rarrays, one to put in the function and another to compare with it
     int length = 2;
     rarray<int,2> function_test(length,length);
-    rarray<int,2> compare(length,length); 
     // number we want to distribute is 16
-    int n = 16;
+    int n = 400;
     // f is the number that should appear in each square
     int f = n/(length*length);
-    // fill compare array with 4's
-    compare.fill(f);
-    compare[1][1] = 5;
     // run function with test array and n
     initialize_uniform(function_test, n);
     // check if the arrays are the same and inform of where a mismatch occurs
     for (int i=0; i<length; i++) {
         for (int j=0; j<length; j++){
-            BOOST_CHECK_MESSAGE(function_test[i][j] == compare[i][j], "value at " << i << " " << j);
+            BOOST_CHECK_MESSAGE(function_test[i][j] == f, "value at " << i << " " << j);
         }
     }
 }
@@ -79,7 +75,7 @@ BOOST_AUTO_TEST_CASE(larger_numbers_test){
 
         }
     }
-    BOOST_CHECK(test_result == 1);
+    BOOST_CHECK_MESSAGE(test_result == 1, "function initialize_uniform in larger_numbers_test");
 }
 
 // could also just go through every element, check if they're all the same, and then check if they add up to n?
