@@ -67,7 +67,6 @@ BOOST_AUTO_TEST_CASE(larger_numbers){
 }
 
 
-
 BOOST_AUTO_TEST_CASE(uneven_division_R1){
     // create two 5x5 rarrays, one to put in the function and another to compare with it
     int length = 5;
@@ -77,7 +76,7 @@ BOOST_AUTO_TEST_CASE(uneven_division_R1){
     int f = n/(length*length); // the number that should appear in each square, other than the one in the last position
     int ff = f+1; // the number that should appear in the final position
     compare.fill(f);
-    compare[length-1][length-1] = ff; 
+    //compare[length-1][length-1] = ff; 
     // run function with test array and n
     initialize_uniform(function_test, n);
     // check if the arrays are the same
