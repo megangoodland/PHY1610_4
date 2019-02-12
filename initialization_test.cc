@@ -76,7 +76,7 @@ BOOST_AUTO_TEST_CASE(uneven_division_R1){
     int f = n/(length*length); // the number that should appear in each square, other than the one in the last position
     int ff = f+1; // the number that should appear in the final position
     compare.fill(f);
-    //compare[length-1][length-1] = ff; 
+    compare[length-1][length-1] = ff; 
     // run function with test array and n
     initialize_uniform(function_test, n);
     // check if the arrays are the same
@@ -84,6 +84,7 @@ BOOST_AUTO_TEST_CASE(uneven_division_R1){
     for (int i=0; i<length; i++) {
         for (int j=0; j<length; j++){
             std::cout << function_test[i][j] << " " << i << " " << j << std::endl;
+            std::cout << compare[i][j] << " " << i << " " << j << std::endl;
             if (function_test[i][j] == compare[i][j]){
                 test_result = 1;}
             else {
