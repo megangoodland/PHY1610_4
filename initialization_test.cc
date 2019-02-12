@@ -1,8 +1,8 @@
-// output_bt.cc
+//  std::cout << function_test[i][j] << " " << i << " " << j << std::endl;
 //
 //
 // Megan Goodland, University of Toronto
-// January 2019
+// February 2019
 
 #include "initialization.h"
 #include <iostream>
@@ -83,14 +83,14 @@ BOOST_AUTO_TEST_CASE(uneven_division_R1){
     int test_result = 1; // 1 means pass, 0 means fail
     for (int i=0; i<length; i++) {
         for (int j=0; j<length; j++){
-            std::cout << function_test[i][j] << " " << i << " " << j << std::endl;
-            std::cout << compare[i][j] << " " << i << " " << j << std::endl;
             if (function_test[i][j] == compare[i][j]){
                 test_result = 1;}
             else {
-                test_result = 0;}
+                test_result = 0;
+                goto end_of_test;}
         }
     }
-    BOOST_CHECK_MESSAGE(test_result == 1, "function initialize_uniform with an uneven division, remainder 1");
+    goto end_of_test;
+    end_of_test: BOOST_CHECK_MESSAGE(test_result == 1, "function initialize_uniform with an uneven division, remainder 1");
 }
 // could also just go through every element, check if they're all the same, and then check if they add up to n?
