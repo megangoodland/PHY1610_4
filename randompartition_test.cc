@@ -27,7 +27,7 @@ BOOST_AUTO_TEST_CASE(splitting_100){
     for (int i=0; i<10; i++){
         rand_partition(total, nparts, nperpart, seed);
         for (int n=0; n<nparts; n++){
-            sum = sum + nperpart[i];
+            sum = sum + nperpart[n];
         }
         BOOST_CHECK_MESSAGE(sum == total, "randomly partitioned 100");
         sum = 0;
