@@ -61,7 +61,7 @@ integratedtest: run run-orig
 	
 # when we say make test it'll run output_bt
 test: output_bt
-	./output_bt
+	./output_bt --log_level=all
 	
 # for now we just have the information for the initialization module in
 output_bt: output_bt.o initialization.o
