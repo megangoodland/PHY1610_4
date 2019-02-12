@@ -66,7 +66,7 @@ test: output_bt
 # for now we just have the information for the initialization module in
 
 output_bt.o: output_bt.cc
-	${CXX} ${CXXFLAGS} -c -o $@ $<
+	${CXX} -std=c++11 -g -c $@ $<
 	
 output_bt: output_bt.o initialization.o 
 	${CXX} ${LDFLAGS} -o $@ $^ -lboost_unit_test_framework
