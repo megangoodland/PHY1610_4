@@ -59,9 +59,9 @@ clean-more:
 integratedtest: run run-orig
 	diff run run-orig
 
-# when we say make testsuite it'll run output_bt
-testsuite: initialization_test randompartition_test
-	./initialization_test ./randompartition_test
+# When we say make testsuite it'll run the tests for all the modules
+testsuite: run-randompartition_test run-randompartition_test
+	run-randompartition_test run-randompartition_test
 
 # Test for initialization module
 
@@ -71,6 +71,9 @@ initialization_test.o: initialization_test.cc
 initialization_test: initialization_test.o initialization.o 
 	${CXX} ${LDFLAGS} -o $@ $^ -lboost_unit_test_framework
 	
+run-initialization_test: initialization_test
+	./initialization_test > run-initialization_test
+	
 # Test for randompartition module
 
 randompartition_test.o: randompartition_test.cc
@@ -78,6 +81,9 @@ randompartition_test.o: randompartition_test.cc
 	
 randompartition_test: randompartition_test.o randompartition.o
 	${CXX} ${LDFLAGS} -o $@ $^ -lboost_unit_test_framework
+
+run-randompartition_test: randompartition_test
+	./randompartition_test > run-randompartition_test
 
 help:
 	@echo Type:
