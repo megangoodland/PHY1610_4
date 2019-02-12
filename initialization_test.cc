@@ -30,6 +30,23 @@
 
 // what does it do when the number can't be distributed absolutely evenly?
 
+// Function that compares two rarrays, returns 1 if they are the same, 0 if they are different
+int compare_rarrays(rarray<int,2>& a, rarray<int,2>& b){
+    int length = a.extent(0) // input arrays are of the same size and square
+    int test_result = 1; // 1 means pass, 0 means fail
+    for (int i=0; i<length; i++) {
+        for (int j=0; j<length; j++){
+            if (a[i][j] == b[i][j]){
+                test_result = 1;}
+            else {
+                test_result = 0;
+                goto end_of_test;}
+        }
+    }
+    goto end_of_test;
+    end_of_test: return test_result;
+}
+
 BOOST_AUTO_TEST_CASE(even_distribution){
     int length = 2;
     rarray<int,2> function_test(length,length);
@@ -135,19 +152,19 @@ BOOST_AUTO_TEST_CASE(uneven_division_R5){
     compare[0][1] = ff; compare[1][0] = ff; compare[1][2] = ff; compare[2][1] = ff; compare[2][2] = ff; 
     initialize_uniform(function_test, n); // run function with test array and n
     // check if the arrays are the same
-    int test_result = 1; // 1 means pass, 0 means fail
-    for (int i=0; i<length; i++) {
-        for (int j=0; j<length; j++){
-            if (function_test[i][j] == compare[i][j]){
-                test_result = 1;}
-            else {
-                test_result = 0;
-                goto end_of_test;
-            }
-        }
-    }
-    goto end_of_test;
-    end_of_test: BOOST_CHECK_MESSAGE(test_result == 1, "function initialize_uniform with an uneven division, remainder 3");
+   // int test_result = 1; // 1 means pass, 0 means fail
+ //   for (int i=0; i<length; i++) {
+     //   for (int j=0; j<length; j++){
+       //     if (function_test[i][j] == compare[i][j]){
+         //       test_result = 1;}
+           // else {
+            //    test_result = 0;
+              //  goto end_of_test;
+            //}
+       // }
+    //}
+   // goto end_of_test;
+    BOOST_CHECK_MESSAGE(compare_rarrays(function_test, compare) == 1, "function initialize_uniform with an uneven division, remainder 5");
 }
 
 // could also just go through every element, check if they're all the same, and then check if they add up to n?
