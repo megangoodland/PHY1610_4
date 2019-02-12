@@ -101,7 +101,7 @@ BOOST_AUTO_TEST_CASE(uneven_division_R3){
     int length = 5;
     rarray<int,2> function_test(length,length);
     rarray<int,2> compare(length,length); 
-    int n = 10005; // number we want to distribute, should have a remainder of 3 when divided by lengthxlength
+    int n = 10006; // number we want to distribute, should have a remainder of 3 when divided by lengthxlength
     int f = n/(length*length); // the number that should appear in each square, other than the one in the last 3 positions
     // last 3 positions have i = length-1, j = length-1, length-2, length-3
     int ff = f+1; // the number that should appear in the final 3 positions
