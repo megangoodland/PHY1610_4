@@ -14,7 +14,7 @@
 #include <fstream>
 #define BOOST_TEXT_DYN_LINK
 #define BOOST_TEST_MODULE output_bt
-#include <boost/test/uni_test.hpp>
+#include <boost/test/included/unit_test.hpp>
 
 //void initialize_uniform(rarray<int,2>& number, int total)
 //{
