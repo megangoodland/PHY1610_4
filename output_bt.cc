@@ -42,13 +42,11 @@ BOOST_AUTO_TEST_CASE(initialize_uniform_test){
     int f = n/(length*length);
     // fill compare array with 4's
     compare.fill(f);
-    // number we want to distribute is 4x4 = 16
-    int n = 16;
     // run function with test array and n
     initialize_uniform(function_test, n);
     // check if the arrays are the same
     // fill compare array with difference between old value and corresponding element from function_test
-    for (int i=0, i<length, i++) {
+    for (int i=0; i<length; i++) {
         BOOST_EQUAL_COLLECTIONS(function_test[i][], function_test[i][]+length, compare[i][], compare[i][]+length);
     }
 }
