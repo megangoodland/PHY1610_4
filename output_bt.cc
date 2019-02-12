@@ -54,7 +54,7 @@ BOOST_AUTO_TEST_CASE(initialize_uniform_test){
     //    }
     // }
     
-    BOOST_TEST(function_test op compare);
+    BOOST_TEST(function_test op compare, boost::test_tools::per_element());
 }
 
 //int add(int i, int j){
