@@ -149,7 +149,7 @@ BOOST_AUTO_TEST_CASE(uneven_division_R5){
     int f = n/(length*length); // the number that should appear in each square, other than the positions with remainder
     int ff = f+1; // the number that should appear in the final 3 positions
     compare.fill(f);
-    compare[0][1] = ff; compare[1][0] = ff; compare[1][2] = ff; compare[2][1] = ff; compare[2][2] = ff; 
+    compare[0][1] = ff; compare[1][0] = ff; compare[1][2] = ff; compare[2][1] = ff; //compare[2][2] = ff; 
     initialize_uniform(function_test, n); // run function with test array and n
     // check if the arrays are the same
    // int test_result = 1; // 1 means pass, 0 means fail
