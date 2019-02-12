@@ -72,7 +72,7 @@ initialization_test: initialization_test.o initialization.o
 	${CXX} ${LDFLAGS} -o $@ $^ -lboost_unit_test_framework
 	
 run-initialization_test: initialization_test
-	./initialization_test > run-initialization_test
+	./initialization_test --log-level all > run-initialization_test
 	
 # Test for randompartition module
 
@@ -83,7 +83,7 @@ randompartition_test: randompartition_test.o randompartition.o
 	${CXX} ${LDFLAGS} -o $@ $^ -lboost_unit_test_framework
 
 run-randompartition_test: randompartition_test
-	./randompartition_test > run-randompartition_test
+	./randompartition_test --log-level all > run-randompartition_test
 
 help:
 	@echo Type:
