@@ -49,7 +49,7 @@ BOOST_AUTO_TEST_CASE(initialize_uniform_test){
     // fill compare array with difference between old value and corresponding element from function_test
     for (int i=0; i<length; i++) {
         for (int j=0; j<length; j++){
-            BOOST_CHECK(function_test[i][j] == compare[i][j]);
+            BOOST_CHECK_MESSAGE(function_test[i][j] == compare[i][j], "Value at " << i << " " << j << " does not match");
         }
     }
 }
