@@ -60,8 +60,8 @@ integratedtest: run run-orig
 	diff run run-orig
 
 # When we say make testsuite it'll run the tests for all the modules
-testsuite: run-initialization_test run-randompartition_test
-	run-initialization_test run-randompartition_test
+testsuite: run-initialization_test run-randompartition_test run-timestep_test
+	run-initialization_test run-randompartition_test run-timestep_test
 
 # Test for initialization module
 
@@ -84,6 +84,17 @@ randompartition_test: randompartition_test.o randompartition.o
 
 run-randompartition_test: randompartition_test
 	./randompartition_test --log_level=all 
+	
+# Test for timestep module
+
+timestep_test.o: timestep_test.cc
+	${CXX} -std=c++11 -g -c -o $@ $<
+	
+timestep_test: timestep_test.o timestep.o randompartition.o
+	${CXX} ${LDFLAGS} -o $@ $^ -lboost_unit_test_framework
+
+run-timestep_test: timestep_test
+	./timestep_test --log_level=all 
 
 help:
 	@echo Type:
