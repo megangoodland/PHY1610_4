@@ -96,6 +96,7 @@ BOOST_AUTO_TEST_CASE(uneven_division){
     int test_result = 1; // 1 means pass, 0 means fail
     for (int i=0; i<length; i++) {
         for (int j=0; j<length; j++){
+            std::cout << function_test << endl;
             if (function_test[i][j] == compare[i][j]){
                 test_result = 1;}
             else {
