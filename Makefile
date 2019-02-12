@@ -60,8 +60,8 @@ integratedtest: run run-orig
 	diff run run-orig
 
 # When we say make testsuite it'll run the tests for all the modules
-testsuite: run-randompartition_test run-randompartition_test
-	run-randompartition_test run-randompartition_test
+testsuite: run-initialization_test run-randompartition_test
+	run-initialization_test run-randompartition_test
 
 # Test for initialization module
 
