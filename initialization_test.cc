@@ -106,7 +106,7 @@ BOOST_AUTO_TEST_CASE(uneven_division_R3){
     // last 3 positions have i = length-1, j = length-1, length-2, length-3
     int ff = f+1; // the number that should appear in the final 3 positions
     compare.fill(f);
-    compare[length-1][length-1] = ff; compare[length-1][length-2] = ff; compare[length-1][length-3] = ff; 
+    compare[length-1][length-1] = ff; compare[length-2][length-1] = ff; compare[length-3][length-1] = ff; 
     initialize_uniform(function_test, n); // run function with test array and n
     // check if the arrays are the same
     int test_result = 1; // 1 means pass, 0 means fail
