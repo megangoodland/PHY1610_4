@@ -29,20 +29,32 @@
 // Test for the initialization module, which performs:
 // Uniform initialization of the simulation of ants walking on a table, subdivided into squares. 
 // >>> Want to test this function with 5 cases. Small tables, making sure the ants get distributed uniformly.
+// what does it do when the number can't be distributed absolutely evenly?
 
 BOOST_AUTO_TEST_CASE(initialize_uniform_test){
     // create two 2x2 rarrays, one to put in the function and another to compare with it
     int length = 2;
     rarray<int,2> function_test(length,length);
     rarray<int,2> compare(length,length); 
+    // number we want to distribute is 16
+    int n = 16;
+    // f is the number that should appear in each square
+    int f = n/(length*length);
     // fill compare array with 4's
-    compare.fill(4);
+    compare.fill(f);
     // number we want to distribute is 4x4 = 16
     int n = 16;
     // run function with test array and n
     initialize_uniform(function_test, n);
     // check if the arrays are the same
-    BOOST_CHECK(function_test[1][1]==compare[1][1]);
+    // fill compare array with difference between old value and corresponding element from function_test
+    //for (int i=0, i<length, i++) {
+    //    for (int j=0, j<length, j++){
+    //        compare[i][j] = compare[i][j] - function_test[i][j];
+    //    }
+    // }
+    
+    BOOST_TEST(function_test op compare);
 }
 
 //int add(int i, int j){
