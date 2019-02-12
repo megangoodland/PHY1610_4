@@ -32,7 +32,7 @@
 
 // Function that compares two rarrays, returns 1 if they are the same, 0 if they are different
 int compare_rarrays(rarray<int,2>& a, rarray<int,2>& b){
-    int length = a.extent(0) // input arrays are of the same size and square
+    int length = a.extent(0); // input arrays are of the same size and square
     int test_result = 1; // 1 means pass, 0 means fail
     for (int i=0; i<length; i++) {
         for (int j=0; j<length; j++){
