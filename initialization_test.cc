@@ -1,7 +1,5 @@
 // output_bt.cc
 //
-// Includes the following tests: 
-//
 //
 // Megan Goodland, University of Toronto
 // January 2019
@@ -10,7 +8,7 @@
 #include <iostream>
 #include <fstream>
 #define BOOST_TEXT_DYN_LINK
-#define BOOST_TEST_MODULE output_bt
+#define BOOST_TEST_MODULE initialization_test
 #include <boost/test/included/unit_test.hpp>
 
 //void initialize_uniform(rarray<int,2>& number, int total)
@@ -49,7 +47,7 @@ BOOST_AUTO_TEST_CASE(initialize_uniform_test){
     // fill compare array with difference between old value and corresponding element from function_test
     for (int i=0; i<length; i++) {
         for (int j=0; j<length; j++){
-            BOOST_CHECK_MESSAGE(function_test[i][j] == compare[i][j], "Value at " << i << " " << j << " does not match");
+            BOOST_CHECK_MESSAGE(function_test[i][j] == compare[i][j], "Value at " << i << " " << j << " match");
         }
     }
 }
