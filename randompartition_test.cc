@@ -31,5 +31,6 @@ BOOST_AUTO_TEST_CASE(splitting_100){
         }
         BOOST_CHECK_MESSAGE(sum == total, "randomly partitioned 100");
         sum = 0;
+        nperpart.fill(0);
     }
 }
