@@ -64,8 +64,8 @@ test: output_bt
 	./output_bt
 
 # for now we just have the information for the initialization module in
-output_bt: output_bt.o initialization.o -lboost_unit_test_framework
-	${CXX} ${CXXFLAGS} -c -o $@ $<
+output_bt: output_bt.o initialization.o 
+	${CXX} ${CXXFLAGS} -c -o $@ $< -lboost_unit_test_framework
 
 output_bt.o: output_bt.cc initialization.h
 
