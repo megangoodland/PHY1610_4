@@ -102,12 +102,10 @@ BOOST_AUTO_TEST_CASE(uneven_division_R3){
     rarray<int,2> function_test(length,length);
     rarray<int,2> compare(length,length); 
     int n = 10003; // number we want to distribute, should have a remainder of 3 when divided by lengthxlength
-    int f = n/(length*length); // the number that should appear in each square, other than the one in the positions with remainder
+    int f = n/(length*length); // the number that should appear in each square, other than the positions with remainder
     int ff = f+1; // the number that should appear in the final 3 positions
     compare.fill(f);
-    compare[1][3] = ff; 
-    compare[3][1] = ff; 
-    compare[4][4] = ff; 
+    compare[1][3] = ff; compare[3][1] = ff; compare[4][4] = ff; 
     initialize_uniform(function_test, n); // run function with test array and n
     // check if the arrays are the same
     int test_result = 1; // 1 means pass, 0 means fail
@@ -125,4 +123,33 @@ BOOST_AUTO_TEST_CASE(uneven_division_R3){
     goto end_of_test;
     end_of_test: BOOST_CHECK_MESSAGE(test_result == 1, "function initialize_uniform with an uneven division, remainder 3");
 }
+
+BOOST_AUTO_TEST_CASE(uneven_division_R5){
+    // create two 3x3 rarrays, one to put in the function and another to compare with it
+    int length = 3;
+    rarray<int,2> function_test(length,length);
+    rarray<int,2> compare(length,length); 
+    int n = 113; // number we want to distribute, should have a remainder of 5 when divided by lengthxlength
+    int f = n/(length*length); // the number that should appear in each square, other than the positions with remainder
+    int ff = f+1; // the number that should appear in the final 3 positions
+    compare.fill(f);
+    //compare[1][3] = ff; compare[3][1] = ff; compare[4][4] = ff; 
+    initialize_uniform(function_test, n); // run function with test array and n
+    // check if the arrays are the same
+    int test_result = 1; // 1 means pass, 0 means fail
+    for (int i=0; i<length; i++) {
+        for (int j=0; j<length; j++){
+            std::cout << function_test[i][j] << " " << compare[i][j] << " " << i << j << std::endl;
+            if (function_test[i][j] == compare[i][j]){
+                test_result = 1;}
+            else {
+                test_result = 0;
+                //goto end_of_test;
+            }
+        }
+    }
+    goto end_of_test;
+    end_of_test: BOOST_CHECK_MESSAGE(test_result == 1, "function initialize_uniform with an uneven division, remainder 3");
+}
+
 // could also just go through every element, check if they're all the same, and then check if they add up to n?
