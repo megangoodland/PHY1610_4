@@ -101,12 +101,11 @@ BOOST_AUTO_TEST_CASE(uneven_division_R3){
     int length = 5;
     rarray<int,2> function_test(length,length);
     rarray<int,2> compare(length,length); 
-    int n = 10006; // number we want to distribute, should have a remainder of 3 when divided by lengthxlength
-    int f = n/(length*length); // the number that should appear in each square, other than the one in the last 3 positions
-    // last 3 positions have i = length-1, j = length-1, length-2, length-3
+    int n = 10003; // number we want to distribute, should have a remainder of 3 when divided by lengthxlength
+    int f = n/(length*length); // the number that should appear in each square, other than the one in the positions with remainder
     int ff = f+1; // the number that should appear in the final 3 positions
     compare.fill(f);
-    //compare[length-1][length-1] = ff; compare[length-2][length-4] = ff; compare[length-4][length-1] = ff; 
+    compare[length-1][length-1] = ff; compare[length-2][length-4] = ff; compare[length-4][length-1] = ff; 
     initialize_uniform(function_test, n); // run function with test array and n
     // check if the arrays are the same
     int test_result = 1; // 1 means pass, 0 means fail
@@ -117,7 +116,7 @@ BOOST_AUTO_TEST_CASE(uneven_division_R3){
                 test_result = 1;}
             else {
                 test_result = 0;
-                //goto end_of_test;
+                goto end_of_test;
             }
         }
     }
