@@ -43,7 +43,7 @@ BOOST_AUTO_TEST_CASE(initialize_uniform_test){
     // run function with test array and n
     initialize_uniform(function_test, n);
     // check if the arrays are the same
-    BOOST_CHECK(function_test[1][1]==compare[1][1], tt::tolerance(1));
+    BOOST_TEST(function_test[1][1]==compare[1][1], tt::tolerance(1));
     
 }
 
