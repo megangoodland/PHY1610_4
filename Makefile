@@ -76,7 +76,7 @@ initialization_test: initialization_test.o initialization.o
 randompartition_test.o: randompartition_test.cc
 	${CXX} -std=c++11 -g -c -o $@ $<
 	
-randompartition_test: randompartition_test.o randompartition_test.o 
+randompartition_test: randompartition_test.o randompartition.o
 	${CXX} ${LDFLAGS} -o $@ $^ -lboost_unit_test_framework
 
 help:
