@@ -69,7 +69,7 @@ output_bt.o: output_bt.cc
 	${CXX} ${CXXFLAGS} -c -o $@ $<
 	
 output_bt: output_bt.o initialization.o 
-	${CXX} ${LDFLAGS} -c -o $@ $^ -lboost_unit_test_framework
+	${CXX} ${LDFLAGS} -o $@ $^ -lboost_unit_test_framework
 
 help:
 	@echo Type:
