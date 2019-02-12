@@ -25,7 +25,6 @@ run-orig: antsontable-orig
 clean-orig:
 	\rm -f antsontable-orig.o
 
-
 output.o: output.cc output.h
 	${CXX} ${CXXFLAGS} -c -o $@ $<
 
@@ -40,6 +39,7 @@ initialization.o: initialization.cc initialization.h
 
 randompartition.o: randompartition.cc randompartition.h
 	${CXX} ${CXXFLAGS} -c -o $@ $<
+
 
 antsontable.o: antsontable.cc initialization.h report.h timestep.h output.h
 	${CXX} ${CXXFLAGS} -c -o $@ $<
@@ -58,6 +58,16 @@ clean-more:
 
 integratedtest: run run-orig
 	diff run run-orig
+	
+# when we say make test it'll run output_bt
+test: output_bt
+	./output_bt
+	
+# for now we just have the information for the initialization module in
+output_bt: output_bt.o initialization.o
+	${CXX} ${CXXFLAGS} -c -o $@ $<
+	
+output_bt.o: output_bt.cc initialization.h
 
 help:
 	@echo Type:
