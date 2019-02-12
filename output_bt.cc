@@ -42,6 +42,7 @@ BOOST_AUTO_TEST_CASE(initialize_uniform_test){
     int f = n/(length*length);
     // fill compare array with 4's
     compare.fill(f);
+    compare[1][1] = 5;
     // run function with test array and n
     initialize_uniform(function_test, n);
     // check if the arrays are the same
