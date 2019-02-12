@@ -72,8 +72,9 @@ BOOST_AUTO_TEST_CASE(larger_numbers){
                 test_result = 0;}
         }
     }
-    BOOST_CHECK_MESSAGE(test_result == 1, "function initialize_uniform in larger_numbers");
+    BOOST_CHECK_MESSAGE(test_result == 1, "function initialize_uniform with larger numbers");
 }
+
 
 
 BOOST_AUTO_TEST_CASE(uneven_division){
@@ -89,6 +90,7 @@ BOOST_AUTO_TEST_CASE(uneven_division){
     compare.fill(f);
     // run function with test array and n
     initialize_uniform(function_test, n);
+    std::cout << function_test << endl;
     // check if the arrays are the same
     // fill compare array with difference between old value and corresponding element from function_test
     int test_result = 1; // 1 means pass, 0 means fail
@@ -100,6 +102,6 @@ BOOST_AUTO_TEST_CASE(uneven_division){
                 test_result = 0;}
         }
     }
-    BOOST_CHECK_MESSAGE(test_result == 1, "function initialize_uniform in uneven_division");
+    BOOST_CHECK_MESSAGE(test_result == 1, "function initialize_uniform with an uneven division");
 }
 // could also just go through every element, check if they're all the same, and then check if they add up to n?
