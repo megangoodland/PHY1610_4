@@ -31,7 +31,6 @@
 // >>> Want to test this function with 5 cases. Small tables, making sure the ants get distributed uniformly.
 
 BOOST_AUTO_TEST_CASE(initialize_uniform_test){
-    namespace tt = boost::test_tools;
     // create two 2x2 rarrays, one to put in the function and another to compare with it
     int length = 2;
     rarray<int,2> function_test(length,length);
@@ -43,7 +42,7 @@ BOOST_AUTO_TEST_CASE(initialize_uniform_test){
     // run function with test array and n
     initialize_uniform(function_test, n);
     // check if the arrays are the same
-    BOOST_TEST(function_test[1][1]==compare[1][1], tt::tolerance(1));
+    BOOST_CHECK(function_test[1][1]==compare[1][1]);
     
 }
 
