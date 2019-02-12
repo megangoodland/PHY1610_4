@@ -1,4 +1,6 @@
-// initialization_test.cc
+// output_bt.cc
+//
+// Includes the following tests: 
 //
 // Test for the initialization module, which performs:
 // Uniform initialization of the simulation of ants walking on a table, subdivided into
@@ -8,6 +10,11 @@
 // January 2019
 
 #include "initialization.h"
+#include <iostream>
+#include <fstream>
+#define BOOST_TEXT_DYN_LINK
+#define BOOST_TEST_MODULE 
+#include <boost/test/uni_test.hpp>
 
 //void initialize_uniform(rarray<int,2>& number, int total)
 //{
@@ -20,3 +27,14 @@
 //        }/
 //    }    
 //}
+int add(int i, int j){
+    return i+j;
+}
+
+BOOST_AUTO_TEST_CASE(add_test){
+    BOOST_CHECK(add(2,2)==5);
+    
+}
+
+
+
