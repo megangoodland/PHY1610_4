@@ -61,7 +61,7 @@ integratedtest: run run-orig
 
 # when we say make testsuite it'll run output_bt
 testsuite: initialization_test randompartition_test
-	./initialization_test --log_level=all ./randompartition_test --log_level=all
+	./initialization_test ./randompartition_test
 
 # Test for initialization module
 
