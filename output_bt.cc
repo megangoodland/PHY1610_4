@@ -2,9 +2,6 @@
 //
 // Includes the following tests: 
 //
-// Test for the initialization module, which performs:
-// Uniform initialization of the simulation of ants walking on a table, subdivided into
-// squares. 
 //
 // Megan Goodland, University of Toronto
 // January 2019
@@ -27,14 +24,27 @@
 //        }/
 //    }    
 //}
-int add(int i, int j){
-    return i+j;
-}
 
-BOOST_AUTO_TEST_CASE(add_test){
-    BOOST_CHECK(add(2,2)==4);
+
+// Test for the initialization module, which performs:
+// Uniform initialization of the simulation of ants walking on a table, subdivided into squares. 
+// >>> Want to test this function with 5 cases. Small tables, making sure the ants get distributed uniformly.
+
+BOOST_AUTO_TEST_CASE(initialize_uniform_test){
+    // create two 2x2 rarrays, one to put in the function and another to compare with it
+    length = 2;
+    rarray<int,2> function_test(length,length);
+    rarray<int,2> compare(length,length); 
+    // fill compare array with 4's
+    compare.fill(4);
+    // number we want to distribute is 4x4 = 16
+    n = 16;
+    // run function with test array and n
+    initialize_uniform(function_test, n);
+    // check if the arrays are the same
+    BOOST_CHECK(function_test==compare);
     
 }
 
 
-
+// could also just go through every element, check if they're all the same, and then check if they add up to n?
