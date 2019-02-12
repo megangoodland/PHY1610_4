@@ -25,7 +25,7 @@ BOOST_AUTO_TEST_CASE(no_additional_ants){
     
     number_of_ants.fill(num); // put num ants on each square of table
     perform_one_timestep(number_of_ants, new_number_of_ants, seed);
-    
+    new_number_of_ants[1][1] = 10000000;
     int sum1 = num*length*length; // original number of ants on the table
     int sum2 = 0;
     
