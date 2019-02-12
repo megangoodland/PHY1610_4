@@ -48,13 +48,9 @@ BOOST_AUTO_TEST_CASE(initialize_uniform_test){
     initialize_uniform(function_test, n);
     // check if the arrays are the same
     // fill compare array with difference between old value and corresponding element from function_test
-    //for (int i=0, i<length, i++) {
-    //    for (int j=0, j<length, j++){
-    //        compare[i][j] = compare[i][j] - function_test[i][j];
-    //    }
-    // }
-    
-    BOOST_TEST(function_test op compare, boost::test_tools::per_element());
+    for (int i=0, i<length, i++) {
+        BOOST_EQUAL_COLLECTIONS(function_test[i][], function_test[i][]+length, compare[i][], compare[i][]+length);
+    }
 }
 
 //int add(int i, int j){
