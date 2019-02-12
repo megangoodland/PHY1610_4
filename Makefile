@@ -60,15 +60,23 @@ integratedtest: run run-orig
 	diff run run-orig
 
 # when we say make testsuite it'll run output_bt
-testsuite: initialization_test
-	./initialization_test --log_level=all
+testsuite: initialization_test randpartition_test
+	./initialization_test ./randpartition_test --log_level=all
 
-# for now we just have the information for the initialization module in
+# Test for initialization module
 
 initialization_test.o: initialization_test.cc
 	${CXX} -std=c++11 -g -c -o $@ $<
 	
 initialization_test: initialization_test.o initialization.o 
+	${CXX} ${LDFLAGS} -o $@ $^ -lboost_unit_test_framework
+	
+# Test for randpartition module
+
+randpartition_test.o: randpartition_test.cc
+	${CXX} -std=c++11 -g -c -o $@ $<
+	
+randpartition_test: randpartition_test.o randpartition.o 
 	${CXX} ${LDFLAGS} -o $@ $^ -lboost_unit_test_framework
 
 help:
