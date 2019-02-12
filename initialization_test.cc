@@ -33,12 +33,9 @@
 BOOST_AUTO_TEST_CASE(basic_test){
     int length = 2;
     rarray<int,2> function_test(length,length);
-    // number we want to distribute is 16
-    int n = 400;
-    // f is the number that should appear in each square
-    int f = n/(length*length);
-    // run function with test array and n
-    initialize_uniform(function_test, n);
+    int n = 400; // number we want to distribute
+    int f = n/(length*length); // f is the number that should appear in each square
+    initialize_uniform(function_test, n); // run function with test array and n
     // check if the arrays are the same and inform of where a mismatch occurs
     for (int i=0; i<length; i++) {
         for (int j=0; j<length; j++){
@@ -47,22 +44,16 @@ BOOST_AUTO_TEST_CASE(basic_test){
     }
 }
 
-
 BOOST_AUTO_TEST_CASE(larger_numbers){
     // create two 5x5 rarrays, one to put in the function and another to compare with it
     int length = 5;
     rarray<int,2> function_test(length,length);
     rarray<int,2> compare(length,length); 
-    // number we want to distribute is n
-    int n = 10000;
-    // f is the number that should appear in each square
-    int f = n/(length*length);
-    // fill compare array with f
+    int n = 10000; // number we want to distribute is n
+    int f = n/(length*length); // f is the number that should appear in each square
     compare.fill(f);
-    // run function with test array and n
-    initialize_uniform(function_test, n);
+    initialize_uniform(function_test, n); // run function with test array and n
     // check if the arrays are the same
-    // fill compare array with difference between old value and corresponding element from function_test
     int test_result = 1; // 1 means pass, 0 means fail
     for (int i=0; i<length; i++) {
         for (int j=0; j<length; j++){
@@ -77,21 +68,19 @@ BOOST_AUTO_TEST_CASE(larger_numbers){
 
 
 
-BOOST_AUTO_TEST_CASE(uneven_division){
+BOOST_AUTO_TEST_CASE(uneven_division_R1){
     // create two 5x5 rarrays, one to put in the function and another to compare with it
     int length = 5;
     rarray<int,2> function_test(length,length);
     rarray<int,2> compare(length,length); 
-    // number we want to distribute is n
-    int n = 10001;
-    // f is the number that should appear in each square
-    int f = n/(length*length);
-    // fill compare array with f
+    int n = 10005; // number we want to distribute, should have a remainder of 1 when divided by lengthxlength
+    int f = n/(length*length); // the number that should appear in each square, other than the one in the last position
+    int ff = f+1; // the number that should appear in the final position
     compare.fill(f);
+    compare[length-1][length-1] = ff; 
     // run function with test array and n
     initialize_uniform(function_test, n);
     // check if the arrays are the same
-    // fill compare array with difference between old value and corresponding element from function_test
     int test_result = 1; // 1 means pass, 0 means fail
     for (int i=0; i<length; i++) {
         for (int j=0; j<length; j++){
@@ -102,6 +91,6 @@ BOOST_AUTO_TEST_CASE(uneven_division){
                 test_result = 0;}
         }
     }
-    BOOST_CHECK_MESSAGE(test_result == 1, "function initialize_uniform with an uneven division");
+    BOOST_CHECK_MESSAGE(test_result == 1, "function initialize_uniform with an uneven division, remainder 1");
 }
 // could also just go through every element, check if they're all the same, and then check if they add up to n?
