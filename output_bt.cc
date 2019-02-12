@@ -32,7 +32,7 @@ int add(int i, int j){
 }
 
 BOOST_AUTO_TEST_CASE(add_test){
-    BOOST_CHECK(add(2,2)==5);
+    BOOST_CHECK(add(2,2)==4);
     
 }
 
