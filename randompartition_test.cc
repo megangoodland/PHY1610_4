@@ -23,7 +23,7 @@ BOOST_AUTO_TEST_CASE(splitting_100){
     int nparts = 10;
     size_t seed = 11;
     rarray<int,1> nperpart(10);
-    int sum = 0
+    int sum = 0;
     for (int i=0; i<10; i++){
         rand_partition(total, nparts, nperpart, seed);
         for (int n=0; n<nparts; n++){
