@@ -59,11 +59,7 @@ clean-more:
 integratedtest: run run-orig
 	diff run run-orig
 
-# When we say make testsuite it'll run the tests for all the modules
-testsuite: run-initialization_test run-timestep_test run-randompartition_test
-
 # Test for initialization module
-
 initialization_test.o: initialization_test.cc
 	${CXX} -std=c++11 -g -c -o $@ $<
 	
