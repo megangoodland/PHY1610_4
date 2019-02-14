@@ -64,7 +64,7 @@ initialization_test.o: initialization_test.cc
 	${CXX} -std=c++11 -g -c -o $@ $<
 	
 initialization_test: initialization_test.o initialization.o 
-	${CXX} ${LDFLAGS} -o $@ $^ -lboost_unit_test_framework
+	${CXX} ${LDFLAGS} -o $@ $^ 
 	
 run-initialization_test: initialization_test
 	./initialization_test --log_level=all
@@ -75,7 +75,7 @@ randompartition_test.o: randompartition_test.cc
 	${CXX} -std=c++11 -g -c -o $@ $<
 	
 randompartition_test: randompartition_test.o randompartition.o
-	${CXX} ${LDFLAGS} -o $@ $^ -lboost_unit_test_framework
+	${CXX} ${LDFLAGS} -o $@ $^ 
 
 run-randompartition_test: randompartition_test
 	./randompartition_test --log_level=all 
@@ -85,7 +85,7 @@ timestep_test.o: timestep_test.cc
 	${CXX} -std=c++11 -g -c -o $@ $<
 	
 timestep_test: timestep_test.o timestep.o randompartition.o
-	${CXX} ${LDFLAGS} -o $@ $^ -lboost_unit_test_framework
+	${CXX} ${LDFLAGS} -o $@ $^ 
 
 run-timestep_test: timestep_test
 	./timestep_test --log_level=all 
